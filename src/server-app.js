@@ -4,7 +4,7 @@ import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 
-import GalleryApp from './containers/gallery-app';
+import App from './containers/app';
 
 // require('babel-polyfill');
 
@@ -19,11 +19,50 @@ app.get('/', (req, res) => {
   res.status(200).json({ hello: 'world'});
 });
 
+let store = {
+  items: [
+    {
+      id: 1,
+      name: 'Item1',
+      author: 'Author1',
+      url: '/item/item1',
+      image: 'https://placekitten.com/200/200',
+      products: [
+        {
+          name: 'Product1',
+          color: 'brown',
+          size: 'size',
+          format: 'format',
+          template_id: 1,
+          tags: ['brown', 'cat'],
+        }
+      ],
+    },
+    {
+      id: 1,
+      name: 'Item2',
+      author: 'Author2',
+      url: '/item/item2',
+      image: 'https://placekitten.com/200/300',
+      products: [
+        {
+          name: 'Product2',
+          color: 'grey',
+          size: 'size',
+          format: 'format',
+          template_id: 1,
+          tags: ['grey', 'cat'],
+        }
+      ],
+    },
+  ]
+}
+
 app.get('/gallery/:group', (req, res) => {
   let {group = ''} = req.params;
 
   function renderPage() {
-    let renderedApp = renderToString(React.createElement(GalleryApp, {group}));
+    let renderedApp = renderToString(React.createElement(App, {store, group}));
 
     let html = `
       <meta name="viewport" content="width=device-width, initial-scale=0.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
