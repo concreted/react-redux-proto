@@ -1,0 +1,24 @@
+{
+  "name": "react-redux-proto",
+  "version": "0.0.1",
+  "description": "react redux prototype app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/concreted/react-redux-proto.git"
+  },
+  "author": "concreted",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/concreted/react-redux-proto/issues"
+  },
+  "homepage": "https://github.com/concreted/react-redux-proto#readme",
+  "dependencies": {
+    "axios": "^0.11.0",
+    "react": "^15.0.2",
+    "react-redux": "^4.4.5"
+  }
+}
