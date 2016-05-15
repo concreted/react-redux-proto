@@ -36,6 +36,8 @@ app.get('/gallery/:group', (req, res) => {
       <div id="app-container">
         ${renderedApp}
       </div>
+      <script>window.__INITIAL_STATE__ = ${JSON.stringify(store.getState())};</script>
+      <script async defer src="/public/app.js"></script>
     `
 
     return html;

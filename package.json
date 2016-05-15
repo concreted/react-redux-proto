@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "APP_DATA_PORT=80 PORT=3000 HOST=localhost nodemon src/server.js"
+    "start": "APP_DATA_PORT=80 PORT=3000 HOST=localhost nodemon src/server.js --watch src"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,13 @@
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "redux-create-reducers": "^0.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.8.0",
+    "babel-loader": "^6.2.4",
+    "gulp": "^3.9.1",
+    "gulp-run-sequence": "^0.3.2",
+    "webpack": "^1.13.0",
+    "webpack-stream": "^3.2.0"
   }
 }
