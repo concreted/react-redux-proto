@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './src/containers/app.js',
+  entry: './src/client/index.js',
   output: {
     filename: 'bundle.js'
   },
@@ -12,6 +12,10 @@ module.exports = {
         query: {
           presets: ['es2015']
         }
+      },
+      {
+        test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
+        loader: 'imports?define=>false&this=>window'
       }
     ]
   }

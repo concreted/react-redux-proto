@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Gateway } from 'react-gateway';
 import { bindActionCreators } from 'redux';
+import Masonry from 'react-masonry-component';
 
 import { div, h1 } from '../components/html';
 import { Item } from '../components';
@@ -18,6 +19,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {}
 }
+
+var masonryOptions = {
+    transitionDuration: 0
+};
 
 class GalleryPage extends React.Component {
 
@@ -43,7 +48,9 @@ class GalleryPage extends React.Component {
           React.createElement('h1', {},
             `gallery`
           ),
-          pages
+          React.createElement(Masonry, {options: masonryOptions},
+            pages
+          )
         )
       )
     );
