@@ -13,8 +13,10 @@ npm start
 ```
 
 ## todo
-[] item detail app
-[] react-router
+[x] item detail page
 [] infinite scroll
 [] infinite scroll pagination
 [] masonry
+[] masonry middle-out loading
+[] react-router
+[] gallery->detail spa
