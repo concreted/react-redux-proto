@@ -4,6 +4,7 @@ import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 
+import configureStore from './store/store';
 import App from './containers/app';
 
 // require('babel-polyfill');
@@ -19,7 +20,7 @@ app.get('/', (req, res) => {
   res.status(200).json({ hello: 'world'});
 });
 
-let store = {
+let data = {
   items: [
     {
       id: 1,
@@ -58,6 +59,8 @@ let store = {
   ]
 }
 
+let store = configureStore(data);
+
 app.get('/gallery/:group', (req, res) => {
   let {group = ''} = req.params;
 
@@ -67,7 +70,6 @@ app.get('/gallery/:group', (req, res) => {
     let html = `
       <meta name="viewport" content="width=device-width, initial-scale=0.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
       <div id="app-container">
-        <h1>${group}</h1>
         ${renderedApp}
       </div>
     `

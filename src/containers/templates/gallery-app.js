@@ -4,16 +4,36 @@ import { connect } from 'react-redux';
 import { Gateway } from 'react-gateway';
 import { bindActionCreators } from 'redux';
 
-const GalleryApp = ({group}) => {
-  return (
-    React.createElement('div', {className: 'gallery-app'},
-      React.createElement('div', {className: 'gallery-app__content'},
-        React.createElement('div', {},
-          `${group}`
-        )
-      )
-    )
-  );
+function mapStateToProps(state) {
+  const { data } = state;
+
+  return {
+    items: state.items
+  }
 }
 
-export default GalleryApp;
+function mapDispatchToProps(dispatch) {
+  return {}
+}
+
+class GalleryApp extends React.Component {
+
+  render() {
+    let items = this.props.items.map(function(item) {
+      return React.createElement('div', {}, `${item.name}`)
+    });
+
+    return (
+      React.createElement('div', {className: 'gallery-app'},
+        React.createElement('div', {className: 'gallery-app__content'},
+          React.createElement('h1', {},
+            `${this.props.group}`
+          ),
+          items
+        )
+      )
+    );
+  }
+}
+
+export default connect(mapStateToProps)(GalleryApp);
