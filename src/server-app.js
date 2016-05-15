@@ -22,9 +22,12 @@ app.get('/', (req, res) => {
   res.status(200).json({ hello: 'world'});
 });
 
-let store = configureStore(data);
 
 function renderPage(group=null, page=null, item=null) {
+  data.group = group;
+  data.page = page;
+  data.item = item;
+  let store = configureStore(data);
   let renderedApp = renderToString(React.createElement(App, {store, group, page, item}));
 
   let html = `
@@ -34,7 +37,7 @@ function renderPage(group=null, page=null, item=null) {
       ${renderedApp}
     </div>
     <script>window.__INITIAL_STATE__ = ${JSON.stringify(store.getState())};</script>
-    <script async defer src="/public/app.js"></script>
+    <script async defer src="/public/bundle.js"></script>
   `
 
   return html;

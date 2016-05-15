@@ -16,7 +16,6 @@ npm start
 [x] item detail page
 [] infinite scroll
 [] infinite scroll pagination
-[] masonry
-[] masonry middle-out loading
+[x] masonry
 [] react-router
 [] gallery->detail spa
