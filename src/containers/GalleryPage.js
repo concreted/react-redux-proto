@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { Gateway } from 'react-gateway';
 import { bindActionCreators } from 'redux';
 
-import { div, h1 } from '../../components/html';
-import { Item } from '../../components';
+import { div, h1 } from '../components/html';
+import { Item } from '../components';
 
 function mapStateToProps(state) {
   const { data } = state;
 
   return {
-    items: state.items // should be data.items
+    items: state.items
   }
 }
 
@@ -19,7 +19,7 @@ function mapDispatchToProps(dispatch) {
   return {}
 }
 
-class GalleryApp extends React.Component {
+class GalleryPage extends React.Component {
 
   render() {
     let items = this.props.items.map(function(item) {
@@ -27,10 +27,10 @@ class GalleryApp extends React.Component {
     });
 
     return (
-      div({className: 'gallery-app'},
-        React.createElement('div', {className: 'gallery-app__content'},
+      div({className: 'gallery-page'},
+        React.createElement('div', {className: 'gallery-page__content'},
           React.createElement('h1', {},
-            `${this.props.group}`
+            `gallery`
           ),
           items
         )
@@ -39,4 +39,4 @@ class GalleryApp extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(GalleryApp);
+export default connect(mapStateToProps)(GalleryPage);

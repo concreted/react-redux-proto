@@ -5,13 +5,15 @@ import {
   GatewayDest
 } from 'react-gateway';
 
-import GalleryApp from './templates/gallery-app'
+import ShopApp from './templates/shop-app'
 
-const App = ({store, group}) => {
+const App = ({store, group, page, item}) => {
   return (
     React.createElement(GatewayProvider, {},
       React.createElement(Provider, {store: store},
-        React.createElement(GalleryApp, {group: group})
+        React.createElement(ShopApp,
+          {group: group, page: page, item: item}
+        )
       )
     )
   );

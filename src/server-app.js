@@ -24,26 +24,32 @@ app.get('/', (req, res) => {
 
 let store = configureStore(data);
 
+function renderPage(group=null, page=null, item=null) {
+  let renderedApp = renderToString(React.createElement(App, {store, group, page, item}));
+
+  let html = `
+    <meta name="viewport" content="width=device-width, initial-scale=0.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <link rel="stylesheet" type="text/css" href="/public/style.css">
+    <div id="app-container">
+      ${renderedApp}
+    </div>
+    <script>window.__INITIAL_STATE__ = ${JSON.stringify(store.getState())};</script>
+    <script async defer src="/public/app.js"></script>
+  `
+
+  return html;
+}
+
 app.get('/gallery/:group', (req, res) => {
   let {group = ''} = req.params;
 
-  function renderPage() {
-    let renderedApp = renderToString(React.createElement(App, {store, group}));
+  res.status(200).send(renderPage(group));
+});
 
-    let html = `
-      <meta name="viewport" content="width=device-width, initial-scale=0.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
-      <link rel="stylesheet" type="text/css" href="/public/style.css">
-      <div id="app-container">
-        ${renderedApp}
-      </div>
-      <script>window.__INITIAL_STATE__ = ${JSON.stringify(store.getState())};</script>
-      <script async defer src="/public/app.js"></script>
-    `
+app.get('/item/:item', (req, res) => {
+  let {item = ''} = req.params;
 
-    return html;
-  }
-
-  res.status(200).send(renderPage());
+  res.status(200).send(renderPage(null, null, item));
 });
 
 app.get('/healthcheck', (req, res) => {

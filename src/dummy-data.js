@@ -58,7 +58,8 @@ for (var i = 0; i < 4; i++) {
 }
 
 let data = {
-  items: items
+  items: items,
+  products: items[0].products
 }
 
 export default data;
