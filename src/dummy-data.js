@@ -57,8 +57,10 @@ for (var i = 0; i < 4; i++) {
   items = items.concat(kittens);
 }
 
+let pages = [items, items]
+
 let data = {
-  items: items,
+  pages,
   products: items[0].products
 }
 
