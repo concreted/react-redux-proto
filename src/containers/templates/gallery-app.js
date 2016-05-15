@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { Gateway } from 'react-gateway';
 import { bindActionCreators } from 'redux';
 
+import { div, h1 } from '../../components/html';
+import { Item } from '../../components';
+
 function mapStateToProps(state) {
   const { data } = state;
 
@@ -20,11 +23,11 @@ class GalleryApp extends React.Component {
 
   render() {
     let items = this.props.items.map(function(item) {
-      return React.createElement('div', {}, `${item.name}`)
+      return Item(item)
     });
 
     return (
-      React.createElement('div', {className: 'gallery-app'},
+      div({className: 'gallery-app'},
         React.createElement('div', {className: 'gallery-app__content'},
           React.createElement('h1', {},
             `${this.props.group}`
