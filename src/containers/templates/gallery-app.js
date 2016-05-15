@@ -11,7 +11,7 @@ function mapStateToProps(state) {
   const { data } = state;
 
   return {
-    items: state.items
+    items: state.items // should be data.items
   }
 }
 

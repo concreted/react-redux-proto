@@ -16,7 +16,7 @@ let port = process.env.PORT;
 let app = express();
 
 // Built assets.
-app.use('/public', express.static('src/containers'));
+app.use('/public', express.static('build'));
 
 app.get('/', (req, res) => {
   res.status(200).json({ hello: 'world'});
@@ -32,6 +32,7 @@ app.get('/gallery/:group', (req, res) => {
 
     let html = `
       <meta name="viewport" content="width=device-width, initial-scale=0.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+      <link rel="stylesheet" type="text/css" href="/public/style.css">
       <div id="app-container">
         ${renderedApp}
       </div>
