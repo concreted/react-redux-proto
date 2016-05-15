@@ -1,0 +1,9 @@
+.gallery-app__content {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.item {
+  display: inline-block;
+}
