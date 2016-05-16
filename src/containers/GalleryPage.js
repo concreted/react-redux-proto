@@ -8,6 +8,7 @@ import Waypoint from 'react-waypoint';
 
 import { div, h1 } from '../components/html';
 import { Item } from '../components';
+import * as appActions from '../actions/appActions';
 
 function mapStateToProps(state) {
   const { data } = state;
@@ -18,7 +19,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {}
+  return {
+    appActions: bindActionCreators(appActions, dispatch)
+  };
 }
 
 var masonryOptions = {
@@ -35,8 +38,9 @@ class GalleryPage extends React.Component {
   */
   _loadMoreItems() {
     console.log('loading more items');
-    console.log(this);
     // manipulate the redux store here to add more items
+    let currentPage = this.props.pages.length + 1;
+    this.props.appActions.loadPageItems(currentPage + 1);
   }
 
   render() {
@@ -72,4 +76,4 @@ class GalleryPage extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(GalleryPage);
+export default connect(mapStateToProps, mapDispatchToProps)(GalleryPage);
