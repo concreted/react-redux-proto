@@ -18,6 +18,10 @@ let app = express();
 // Built assets.
 app.use('/public', express.static('build'));
 
+app.get('/api/items/:page', (req, res) => {
+  res.status(200).json(data.pages[0]);
+});
+
 app.get('/', (req, res) => {
   res.status(200).json({ hello: 'world'});
 });

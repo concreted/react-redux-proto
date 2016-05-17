@@ -35,7 +35,7 @@ class ShopApp extends React.Component {
           React.createElement('h1', {},
             `${header}`
           ),
-          React.createElement(Page)
+          React.createElement(Page, {page: this.props.page})
         )
       )
     );
